@@ -41,6 +41,7 @@ jobs:
         export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$GITHUB_WORKSPACE/lib
         export PATH=/usr/pgsql-15/bin:$PATH
         cd $GITHUB_WORKSPACE
+        mkdir -p /usr/lib64/ccache/clang
         ln -s /usr/bin/clang /usr/lib64/ccache/clang
         make USE_PGXS=1
  
