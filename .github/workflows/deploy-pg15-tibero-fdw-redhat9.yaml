@@ -34,7 +34,7 @@ jobs:
         yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-9-x86_64/pgdg-redhat-repo-latest.noarch.rpm
         yum install -y http://opensource.wandisco.com/centos/7/git/x86_64/wandisco-git-release-7-1.noarch.rpm
         yum -y install redhat-rpm-config gcc make git
-        yum install -y --nobest postgresql15 postgresql15-server postgresql15-llvmjit-devel      
+        yum install -y --nobest postgresql15 postgresql15-server postgresql15-devel      
 
     - name: Build tibero-fdw 
       run: |
@@ -42,7 +42,7 @@ jobs:
         export PATH=/usr/pgsql-15/bin:$PATH
         cd $GITHUB_WORKSPACE
         pg_config
-        make USE_PGXS=1 
+        with_llvm=no make USE_PGXS=1 
  
     - name: Make dist zip file
       run: |
