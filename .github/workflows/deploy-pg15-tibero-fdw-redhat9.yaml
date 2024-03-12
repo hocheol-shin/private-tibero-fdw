@@ -42,8 +42,8 @@ jobs:
         export PATH=/usr/pgsql-15/bin:$PATH
         cd $GITHUB_WORKSPACE
         pg_config
-        make USE_PGXS=1
-        ls || true 
+        make USE_PGXS=1 || true
+        ls 
  
 #    - name: Make dist zip file
 #      run: |
