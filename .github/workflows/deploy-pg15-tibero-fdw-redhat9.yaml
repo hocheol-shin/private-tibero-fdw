@@ -39,8 +39,9 @@ jobs:
     - name: Build tibero-fdw 
       run: |
         export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$GITHUB_WORKSPACE/lib
-        export PATH=/usr/pgsql-14/bin:$PATH
+        export PATH=/usr/pgsql-15/bin:$PATH
         cd $GITHUB_WORKSPACE
+        ln -s /usr/bin/clang /usr/lib64/ccache/clang
         make USE_PGXS=1
  
     - name: Make dist zip file
@@ -62,7 +63,7 @@ jobs:
     - name: Upload release asset
       uses: actions/upload-release-asset@v1
       env:
-        ADMIN_ACCESS_TOKEN: ${{ secrets.ADMIN_ACCESS_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.ADMIN_ACCESS_TOKEN }}
       with:
         upload_url: ${{ steps.latest_release_info.outputs.upload_url }}
         asset_path: ${{ env.ZIP_FILE_PATH }}
