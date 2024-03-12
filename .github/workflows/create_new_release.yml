@@ -4,10 +4,11 @@ name: create-new-release
 # The secret should contain PAT with admin permission to the repository this workflow is added
 
 on:
-  pull_request:
-    types: [closed]
-    branches:
-      - main
+  workflow_dispatch:
+#  pull_request:
+#    types: [closed]
+#    branches:
+#      - main
 
 jobs:
   use_release_automation_workflow:
