@@ -33,8 +33,8 @@ jobs:
         yum update -y
         yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-9-x86_64/pgdg-redhat-repo-latest.noarch.rpm
         yum install -y http://opensource.wandisco.com/centos/7/git/x86_64/wandisco-git-release-7-1.noarch.rpm
-        yum -y install redhat-rpm-config llvm-toolset gcc make git
-        yum install -y --nobest postgresql15 postgresql15-server postgresql15-devel      
+        yum -y install redhat-rpm-config gcc make git
+        yum install -y --nobest postgresql15 postgresql15-server postgresql15-llvmjit-devel      
 
     - name: Build tibero-fdw 
       run: |
