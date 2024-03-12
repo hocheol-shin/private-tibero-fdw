@@ -41,7 +41,8 @@ jobs:
         export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$GITHUB_WORKSPACE/lib
         export PATH=/usr/pgsql-15/bin:$PATH
         cd $GITHUB_WORKSPACE
-        make CC=/usr/bin/clang USE_PGXS=1 
+        export CLANG=/usr/bin/clang
+        make USE_PGXS=1 
  
     - name: Make dist zip file
       run: |
