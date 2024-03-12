@@ -39,7 +39,7 @@ jobs:
     - name: Build tibero-fdw 
       run: |
         export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$GITHUB_WORKSPACE/lib
-        export PATH=/usr/pgsql-14/bin:$PATH
+        export PATH=/usr/pgsql-15/bin:$PATH
         cd $GITHUB_WORKSPACE
         make USE_PGXS=1
  
