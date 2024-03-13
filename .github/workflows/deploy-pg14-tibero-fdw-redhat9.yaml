@@ -41,7 +41,7 @@ jobs:
         export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$GITHUB_WORKSPACE/lib
         export PATH=/usr/pgsql-15/bin:$PATH
         cd $GITHUB_WORKSPACE
-        make USE_PGXS=1
+        make with_llvm=no all
 
     - name: Make dist zip file
       run: |
