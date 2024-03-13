@@ -1,4 +1,4 @@
-name: deploy-pg15-tibero-fdw-redhat9
+name: deploy-pg14-tibero-fdw-redhat9
 
 on:
   workflow_dispatch:
@@ -7,9 +7,9 @@ on:
 
 env:
   BUILD_OS: redhat9
-  ASSET_NAME: postgresql15-tibero-fdw-redhat9
-  BUILD_PATH: /home/postgresql15-tibero-fdw-dist-redhat9
-  ZIP_FILE_PATH: /home/postgresql15-tibero-fdw-dist-redhat9.zip
+  ASSET_NAME: pg14-tibero-fdw-redhat9
+  BUILD_PATH: /home/tibero-fdw-dist-redhat9
+  ZIP_FILE_PATH: /home/tibero-fdw-dist-redhat9.zip
 
 jobs:
   deploy-pg15-tibero-fdw-redhat9:
@@ -34,14 +34,14 @@ jobs:
         yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-9-x86_64/pgdg-redhat-repo-latest.noarch.rpm
         yum install -y http://opensource.wandisco.com/centos/7/git/x86_64/wandisco-git-release-7-1.noarch.rpm
         yum -y install redhat-rpm-config gcc make git
-        yum install -y --nobest postgresql15 postgresql15-server postgresql15-devel      
+        yum install -y --nobest postgresql14 postgresql14-server postgresql14-devel      
 
     - name: Build tibero-fdw 
       run: |
         export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$GITHUB_WORKSPACE/lib
         export PATH=/usr/pgsql-15/bin:$PATH
         cd $GITHUB_WORKSPACE
-        make with_llvm=no all
+        make USE_PGXS=1
 
     - name: Make dist zip file
       run: |
