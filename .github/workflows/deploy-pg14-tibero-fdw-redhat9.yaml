@@ -12,7 +12,7 @@ env:
   ZIP_FILE_PATH: /home/postgresql14-tibero-fdw-dist-redhat9.zip
 
 jobs:
-  deploy-pg15-tibero-fdw-redhat9:
+  deploy-pg14-tibero-fdw-redhat9:
     runs-on: ubuntu-20.04
     container:
       image: registry.access.redhat.com/ubi9/ubi:latest
@@ -39,7 +39,7 @@ jobs:
     - name: Build tibero-fdw 
       run: |
         export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$GITHUB_WORKSPACE/lib
-        export PATH=/usr/pgsql-15/bin:$PATH
+        export PATH=/usr/pgsql-14/bin:$PATH
         cd $GITHUB_WORKSPACE
         make with_llvm=no all
 
