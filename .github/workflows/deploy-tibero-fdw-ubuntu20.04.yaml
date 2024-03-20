@@ -1,8 +1,9 @@
 name: deploy-tibero-fdw-ubuntu20
 
 on:
-  release:
-    types: [published]
+  workflow_dispatch:
+#  release:
+#    types: [published]
 
 env:
   BUILD_OS: ubuntu20
@@ -39,6 +40,7 @@ jobs:
  
     - name: Make dist zip file
       run: |
+        sudo apt-get update -y
         sudo mkdir ${{ env.BUILD_PATH }}
         sudo mkdir ${{ env.BUILD_PATH }}/lib
         sudo cp $GITHUB_WORKSPACE/tibero_fdw.so ${{ env.BUILD_PATH }}
