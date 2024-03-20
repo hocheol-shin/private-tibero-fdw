@@ -51,9 +51,9 @@ jobs:
         sudo cp $GITHUB_WORKSPACE/setenv.sh ${{ env.BUILD_PATH }}
         sudo cp -r $GITHUB_WORKSPACE/tests/ ${{ env.BUILD_PATH }}
         sudo cp -r $GITHUB_WORKSPACE/lib/ ${{ env.BUILD_PATH }}
-        sudo cd ${{ env.BUILD_PATH }}
+        cd ${{ env.BUILD_PATH }}
         sudo apt-get install -y zip
-        sudo cd ${{ env.BUILD_PATH }} && sudo zip -r ${{ env.ZIP_FILE_PATH }} .
+        cd ${{ env.BUILD_PATH }} && sudo zip -r ${{ env.ZIP_FILE_PATH }} .
 
 #    - name: Upload release asset
 #      uses: actions/upload-release-asset@v1
